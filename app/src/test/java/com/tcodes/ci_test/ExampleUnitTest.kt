@@ -19,4 +19,9 @@ class ExampleUnitTest {
     fun just_a_test() {
         assertEquals(1, 1)
     }
+
+    @Test
+    fun doSometest() {
+        assertEquals(1-2, -1)
+    }
 }
