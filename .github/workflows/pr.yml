@@ -3,6 +3,11 @@ name: Android SDK CI
 on: [pull_request]
 
 jobs:
+  check-code-quality:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Android Linter
+      run: ./gradlew lintStagingDebug
   build:
     
     runs-on: ubuntu-latest
@@ -15,11 +20,6 @@ jobs:
         java-version: 1.8
     - name: Grant permissions to gradlew
       run: chmod +x gradlew
-    - name: Run Kotlin Linter
-      run: ./gradlew ktlintStagingDebugCheck
-      # Step 3: Check the code with Android linter
-    - name: Run Android Linter
-      run: ./gradlew lintStagingDebug
     - name: Build SDK
       run: ./gradlew build
     - name: Run Tests
