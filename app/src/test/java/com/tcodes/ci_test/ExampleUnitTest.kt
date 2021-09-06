@@ -19,4 +19,9 @@ class ExampleUnitTest {
     fun just_a_test() {
         assertEquals(1, 1)
     }
+
+    @Test
+    fun intentionally_failing_test() {
+        assertEquals(2, 3)
+    }
 }
