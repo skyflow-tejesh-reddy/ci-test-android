@@ -15,8 +15,13 @@ jobs:
         java-version: 1.8
     - name: Grant permissions to gradlew
       run: chmod +x gradlew
+    - name: Run Kotlin Linter
+      run: ./gradlew ktlintStagingDebugCheck
+      # Step 3: Check the code with Android linter
+    - name: Run Android Linter
+      run: ./gradlew lintStagingDebug
     - name: Build SDK
       run: ./gradlew build
-    - name: tests
+    - name: Run Tests
       id: tests
       run: ./gradlew test
