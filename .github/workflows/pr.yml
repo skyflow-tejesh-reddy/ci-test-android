@@ -1,0 +1,22 @@
+name: Android SDK CI
+
+on: [pull_request]
+
+jobs:
+  build:
+    
+    runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.0
+      - name: Grant permissions to gradlew
+        run: chmod +x gradlew
+      - name: Build SDK
+        run: ./gradlew build
+      - name: tests
+        id: tests
+        run: ./gradlew test
