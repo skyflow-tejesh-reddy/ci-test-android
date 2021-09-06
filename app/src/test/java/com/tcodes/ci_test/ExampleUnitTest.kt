@@ -20,8 +20,4 @@ class ExampleUnitTest {
         assertEquals(1, 1)
     }
 
-    @Test
-    fun doSometest() {
-        assertEquals(1-2, -1)
-    }
 }
