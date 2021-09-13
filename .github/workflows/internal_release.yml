@@ -30,13 +30,13 @@ jobs:
                 ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
 
-    - name: Bump Version
-      run: |
+      - name: Bump Version
+        run: |
            chmod +x ./scripts/bump_version.sh
            ./scripts/bump_version.sh "${{ steps.previoustag.outputs.tag }}" "$(git rev-parse --short "$GITHUB_SHA")"
     
-    - name: Commit changes
-      run: |
+      - name: Commit changes
+        run: |
            git config user.name ${{ github.actor }}
            git config user.email ${{ github.actor }}@users.noreply.gihub.com
            git add dummy-pod-for-cd.podspec
