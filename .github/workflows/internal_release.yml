@@ -43,7 +43,7 @@ jobs:
            git config user.email ${{ github.actor }}@users.noreply.gihub.com
            git add app/build.gradle
            git commit -m "[AUTOMATED] Private Release",
-           git push origin master
+           git push origin
 
 
       - name: Grant Permission for Gradlew to Execute
