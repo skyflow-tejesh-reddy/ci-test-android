@@ -32,7 +32,7 @@ jobs:
            git config user.email "tejesh.skyflow@gmail.com"
            git add app/build.gradle
            git commit -m "[AUTOMATED] Public Release"
-           git push origin 
+           git push origin master
 
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
