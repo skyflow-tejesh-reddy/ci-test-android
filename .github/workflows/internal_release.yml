@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up JDK 12
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 12
 
@@ -46,24 +46,9 @@ jobs:
            git push origin
 
 
-      - name: Grant Permission for Gradlew to Execute
-        run: chmod +x gradlew
-
-      - name: Build AAR ⚙️🛠
-        run: bash ./gradlew :simplelibrary:assemble
-
-      - name: Publish to GitHub Package Registry 🚀
-        run: bash ./gradlew :simplelibrary:publish
-        env:
-          GPR_USER: ${{ github.actor }}
-          GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload Simple Library AAR 🗳
-        uses: actions/upload-release-asset@v1
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Publish package
+        run: gradle publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: simplelibrary/build/outputs/aar/simplelibrary-release.aar
-          asset_name: simple-library.aar
-          asset_content_type: application/aar
