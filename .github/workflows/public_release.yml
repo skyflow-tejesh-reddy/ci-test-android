@@ -22,7 +22,9 @@ jobs:
           fallback: 1.0.0
 
       - name: Bump Version
-        run: npm version "${{ github.event.inputs.version_number }}"
+        run: |
+           chmod +x ./scripts/bump_version.sh
+           ./scripts/bump_version.sh "${{ steps.previoustag.outputs.tag }}"
 
       - name: Commit changes
         run: |
