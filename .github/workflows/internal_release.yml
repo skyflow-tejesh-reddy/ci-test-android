@@ -24,6 +24,12 @@ jobs:
         with:
           java-version: 12
 
+      - name: Get Previous tag
+        id: previoustag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: 1.0.0
+
       - name: Cache Gradle and wrapper
         uses: actions/cache@v2
         with:
