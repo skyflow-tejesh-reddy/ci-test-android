@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'maven-publish'
 }
 
 android {
@@ -30,7 +31,22 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    /****GitHubPackages Path and credentials***/
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/skyflow-tejesh-reddy/ci-test-android")
+
+            credentials {
+                username = System.getenv("GPR_USER")
+                password = System.getenv("GPR_TOKEN")
+            }
+        }
+    }
+
 }
+
 
 dependencies {
 
